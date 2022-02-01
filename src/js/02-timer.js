@@ -12,40 +12,48 @@ let refs = {
     secs: document.querySelector('span[data-seconds]'),
 }
 
-const currentDate = Date.now();
-
 const options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-        let usersDate = selectedDates[0].getTime();
-        if (usersDate <= currentDate) {           
+        let currentDate = new Date();
+        let timerId = null;
+        //console.log('1: ', currentDate);
+        if (selectedDates[0] <= currentDate) {           
             startBtn.setAttribute('disabled', 'disabled');
             window.alert('Please choose a date in the future'); 
             return;
         } else (
             startBtn.removeAttribute('disabled')
         )
-      
+
         startBtn.addEventListener('click', () => {
-            setInterval(() => {
-                const deltaTime = usersDate - currentDate;
-                const { days, hours, minutes, seconds } = convertMs(deltaTime);
-                console.log(`${days}, ${hours}, ${minutes}, ${seconds}`);
-                refs.days.textContent = days;
-                refs.hours.textContent = hours;
-                refs.mins.textContent = minutes;
-                refs.secs.textContent = seconds;
-            }, 1000)
-            
+            timerId = setInterval(() => {            
+                currentDate = new Date();
+
+                let deltaTime = selectedDates[0] - currentDate;   
+                
+                if (currentDate.toString() === selectedDates[0].toString()) {
+                    clearInterval(timerId);
+                    console.log('time is out');
+                    return;
+                }
+
+                let { days, hours, minutes, seconds } = convertMs(deltaTime);
+               
+                refs.days.textContent = `${days}`;
+                refs.hours.textContent = `${hours}`;
+                refs.mins.textContent = `${minutes}`;
+                refs.secs.textContent = `${seconds}`;
+            }, 1000) 
+            console.log(timerId);
         })
     },
 };
 
 flatpickr(inputRef, options);
-
 
 function addLeadingZero(value) {
     return String(value).padStart(2, '0');
