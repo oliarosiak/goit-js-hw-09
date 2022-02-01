@@ -2,43 +2,49 @@ import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
 
-/**
- * Если пользователь выбрал дату в прошлом, покажи window.alert() с текстом "Please choose a date in the future".
- * Если пользователь выбрал валидную дату (в будущем), кнопка «Start» становится активной.
- * Кнопка «Start» должа быть не активна до тех пор, пока пользователь не выбрал дату в будущем.
- * При нажатии на кнопку «Start» начинается отсчет времени до выбранной даты с момента нажатия.
-*/
 const inputRef = document.querySelector('input[type="text"]');
 const startBtn = document.querySelector('button[data-start]');
 
-const currentDate = new Date();
-// console.log(currentDate.getTime())
+let refs = {
+    days: document.querySelector('span[data-days]'),
+    hours: document.querySelector('span[data-hours]'),
+    mins: document.querySelector('span[data-minutes]'),
+    secs: document.querySelector('span[data-seconds]'),
+}
+
+const currentDate = Date.now();
+
 const options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-        const usersDate = selectedDates[0].getTime();
-        if (usersDate <= currentDate.getTime()) {           
+        let usersDate = selectedDates[0].getTime();
+        if (usersDate <= currentDate) {           
             startBtn.setAttribute('disabled', 'disabled');
             window.alert('Please choose a date in the future'); 
+            return;
         } else (
             startBtn.removeAttribute('disabled')
         )
-        // console.log(usersDate);        
+      
+        startBtn.addEventListener('click', () => {
+            setInterval(() => {
+                const deltaTime = usersDate - currentDate;
+                const { days, hours, minutes, seconds } = convertMs(deltaTime);
+                console.log(`${days}, ${hours}, ${minutes}, ${seconds}`);
+                refs.days.textContent = days;
+                refs.hours.textContent = hours;
+                refs.mins.textContent = minutes;
+                refs.secs.textContent = seconds;
+            }, 1000)
+            
+        })
     },
 };
 
 flatpickr(inputRef, options);
-
-
-
-
-
-
-
-
 
 
 function addLeadingZero(value) {
