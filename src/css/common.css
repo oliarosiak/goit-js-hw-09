@@ -3,8 +3,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
@@ -15,4 +15,44 @@ body {
 img {
   display: block;
   max-width: 100%;
+}
+
+/** Task 1 - Styles for buttons */
+
+.wrapper {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  padding: 35px 65px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.start {
+  margin-right: 50px;
+  background-color: aquamarine;
+  border: 5px dotted darkgreen;
+}
+
+.stop {
+  background-color: palevioletred;
+  border: 5px dashed darkred;
+}
+
+.btn.onclick {
+  background-color: rgb(191, 241, 237);
+  border-color: rgb(127, 193, 196);
+  color: rgb(250, 255, 255);
+}
+
+.btn.onstop {
+  background-color: rgb(245, 189, 207);
+  border-color: rgb(218, 156, 156);
+  color: rgb(255, 235, 235);
 }
