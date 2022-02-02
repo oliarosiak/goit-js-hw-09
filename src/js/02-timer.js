@@ -47,6 +47,7 @@ const options = {
         let timerId = null;
         
         if (selectedDates[0] <= currentDate) {
+            startBtn.disabled = true;
             window.alert('Please choose a date in the future'); 
             return;
         } 
