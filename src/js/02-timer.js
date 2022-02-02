@@ -42,7 +42,7 @@ const options = {
     onClose(selectedDates) {
         let currentDate = new Date();
         let timerId = null;
-        //console.log('1: ', currentDate);
+        
         if (selectedDates[0] <= currentDate) {           
             startBtn.setAttribute('disabled', 'disabled');
             window.alert('Please choose a date in the future'); 
@@ -60,7 +60,6 @@ const options = {
                 if (currentDate.toString() === selectedDates[0].toString()) {
                     clearInterval(timerId);
                     finishText.textContent = 't-i-m-e --- i-s --- o-u-t (｡◕‿◕｡)';
-                    console.log('time is out');
                     return;
                 }
 
@@ -100,7 +99,3 @@ function convertMs(ms) {
 
   return { days, hours, minutes, seconds };
 }
-
-// console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-// console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-// console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
