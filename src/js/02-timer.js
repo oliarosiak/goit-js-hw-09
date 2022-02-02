@@ -1,6 +1,7 @@
 import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
+require("flatpickr/dist/themes/confetti.css");
 
 /**
  * Decoration
@@ -27,6 +28,8 @@ const startBtn = document.querySelector('button[data-start]');
 inputRef.classList.add('timer-input');
 startBtn.classList.add('timer-btn');
 
+startBtn.disabled = true;
+
 let refs = {
     days: document.querySelector('span[data-days]'),
     hours: document.querySelector('span[data-hours]'),
@@ -43,13 +46,12 @@ const options = {
         let currentDate = new Date();
         let timerId = null;
         
-        if (selectedDates[0] <= currentDate) {           
-            startBtn.setAttribute('disabled', 'disabled');
+        if (selectedDates[0] <= currentDate) {
             window.alert('Please choose a date in the future'); 
             return;
-        } else (
-            startBtn.removeAttribute('disabled')
-        )
+        } 
+        
+        startBtn.disabled = false;        
 
         startBtn.addEventListener('click', () => {
             timerId = setInterval(() => {            
@@ -59,6 +61,7 @@ const options = {
                 
                 if (currentDate.toString() === selectedDates[0].toString()) {
                     clearInterval(timerId);
+                    startBtn.disabled = true;
                     finishText.textContent = 't-i-m-e --- i-s --- o-u-t (｡◕‿◕｡)';
                     return;
                 }
@@ -70,7 +73,6 @@ const options = {
                 refs.mins.textContent = `${minutes}`;
                 refs.secs.textContent = `${seconds}`;
             }, 1000) 
-            console.log(timerId);
         })
     },
 };

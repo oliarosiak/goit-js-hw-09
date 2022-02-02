@@ -97,6 +97,12 @@ img {
   color: rgb(255, 200, 255);
 }
 
+.timer-btn:disabled {
+  background-color: rgb(138, 110, 158);
+  color: rgb(240, 224, 240);
+  border-color: rgb(220, 200, 236);
+}
+
 .timer {
   display: flex;
   align-items: center;
