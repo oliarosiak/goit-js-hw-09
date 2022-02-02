@@ -24,6 +24,9 @@ finishText.classList.add('finish-text');
 const inputRef = document.querySelector('input[type="text"]');
 const startBtn = document.querySelector('button[data-start]');
 
+inputRef.classList.add('timer-input');
+startBtn.classList.add('timer-btn');
+
 let refs = {
     days: document.querySelector('span[data-days]'),
     hours: document.querySelector('span[data-hours]'),

@@ -72,7 +72,7 @@ img {
   background-color: initial;
 }
 
-input[type='text'] {
+.timer-input {
   height: 75px;
   width: 500px;
   text-align: center;
@@ -84,7 +84,7 @@ input[type='text'] {
   color: rgb(255, 200, 255);
 }
 
-button[type='button'] {
+.timer-btn {
   height: 75px;
   width: 130px;
   margin-left: 20px;
