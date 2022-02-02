@@ -2,6 +2,25 @@ import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
 
+/**
+ * Decoration
+*/
+
+const htmlEl = document.querySelector('html');
+htmlEl.classList.add('timer-html');
+
+const bodyEl = document.querySelector('body');
+bodyEl.classList.add('timer-body');
+
+const timerWrapper = document.querySelector('div.timer');
+const finishText = document.createElement('p');
+timerWrapper.after(finishText);
+finishText.classList.add('finish-text');
+
+/**
+ * Timer script
+*/
+
 const inputRef = document.querySelector('input[type="text"]');
 const startBtn = document.querySelector('button[data-start]');
 
@@ -37,6 +56,7 @@ const options = {
                 
                 if (currentDate.toString() === selectedDates[0].toString()) {
                     clearInterval(timerId);
+                    finishText.textContent = 't-i-m-e --- i-s --- o-u-t (｡◕‿◕｡)';
                     console.log('time is out');
                     return;
                 }
