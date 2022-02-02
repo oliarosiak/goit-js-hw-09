@@ -150,11 +150,11 @@ span.label {
 }
 
 .finish-text {
-  height: 100px;
+  margin-top: 90px;
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 70px;
+  font-size: 80px;
   color: rgb(208, 252, 197);
   text-shadow: 3px 3px 0px #525252, 6px 5px 0px rgba(0, 0, 0, 0.15);
 }
