@@ -15,6 +15,10 @@ wrapperRef.append(refs.startBtn, refs.stopBtn);
 wrapperRef.classList.add('wrapper');
 refs.startBtn.classList.add('btn', 'start');
 refs.stopBtn.classList.add('btn', 'stop', 'onstop');
+
+const smileText = document.createElement('p');
+wrapperRef.before(smileText);
+smileText.classList.add('text');
 /**
  *  Styles for buttons and body
  */
@@ -28,7 +32,7 @@ function onStartBtn() {
     refs.startBtn.setAttribute('disabled', 'disabled');
     refs.startBtn.classList.add('onclick');
     refs.stopBtn.classList.remove('onstop');
-    console.log('Lumos - Let the magic begin! ^_^')
+    smileText.textContent = 'Lumos - Let the magic begin! ^_^'; 
 }
 
 function onStopBtn() {
@@ -36,7 +40,7 @@ function onStopBtn() {
     refs.startBtn.removeAttribute('disabled');
     refs.startBtn.classList.remove('onclick');
     refs.stopBtn.classList.add('onstop');
-    console.log('Hold on! And try again =)')
+    smileText.textContent = 'Hold on! And try again =) Press START';
 }
 
 function getRandomHexColor() {
