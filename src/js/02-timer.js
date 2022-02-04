@@ -49,8 +49,7 @@ const options = {
         
         if (selectedDates[0] <= currentDate) {
             startBtn.disabled = true;
-            Notiflix.Notify.info('Please choose a date in the future')
-            // window.alert('Please choose a date in the future'); 
+            Notiflix.Notify.info('Please choose a date in the future');
             return;
         } 
         
@@ -68,6 +67,8 @@ const options = {
                     finishText.textContent = 't-i-m-e --- i-s --- o-u-t (｡◕‿◕｡)';
                     return;
                 }
+
+                startBtn.disabled = true;
 
                 let { days, hours, minutes, seconds } = convertMs(deltaTime);
                
