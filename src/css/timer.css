@@ -1,0 +1,138 @@
+/** Task 2 - Styles for timer */
+.timer-body {
+  background-color: initial;
+}
+
+.timer-input {
+  height: 75px;
+  width: 500px;
+  text-align: center;
+  border: 7px double rgb(193, 142, 235);
+  border-radius: 35px;
+  font-size: 25px;
+  font-weight: 700;
+  background-color: indigo;
+  color: rgb(255, 200, 255);
+}
+
+.timer-btn {
+  height: 75px;
+  width: 130px;
+  margin-left: 20px;
+  border-width: 7px;
+  border-color: rgb(193, 142, 235);
+  border-radius: 35px;
+  font-size: 25px;
+  font-weight: 700;
+  background-color: indigo;
+  color: rgb(255, 200, 255);
+}
+
+.timer-btn:disabled {
+  background-color: rgb(138, 110, 158);
+  color: rgb(240, 224, 240);
+  border-color: rgb(220, 200, 236);
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 30vh;
+  margin-top: 25px;
+}
+
+.field {
+  flex-basis: calc((100% - 3 * 10px) / 4);
+  text-align: center;
+  border: 10px double rgb(105, 101, 101);
+  border-radius: 35px;
+}
+
+.field:not(:last-child) {
+  margin-right: 10px;
+}
+
+.field:nth-child(1) {
+  background-color: rgb(245, 245, 99);
+}
+
+.field:nth-child(2) {
+  background-color: rgb(245, 139, 174);
+}
+
+.field:nth-child(3) {
+  background-color: rgb(95, 209, 230);
+}
+
+.field:nth-child(4) {
+  background-color: rgb(98, 206, 98);
+}
+
+span.value,
+span.label {
+  display: block;
+  font-weight: 700;
+}
+
+span.value {
+  font-size: 60px;
+  color: darkred;
+}
+
+span.label {
+  font-size: 40px;
+  color: darkslategray;
+}
+
+.finish-text {
+  margin-top: 90px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 80px;
+  color: rgb(208, 252, 197);
+  text-shadow: 3px 3px 0px #525252, 6px 5px 0px rgba(0, 0, 0, 0.15);
+}
+
+.timer-html {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.6));
+  background-color: #fffa02;
+  animation: rgb 30s infinite alternate;
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes rgb {
+  10% {
+    background-color: #ff6b02;
+  }
+  20% {
+    background-color: #ff0602;
+  }
+  30% {
+    background-color: #ff0289;
+  }
+  40% {
+    background-color: #bf02ff;
+  }
+  50% {
+    background-color: #022cff;
+  }
+  60% {
+    background-color: #02bfff;
+  }
+  70% {
+    background-color: #02ffbb;
+  }
+  80% {
+    background-color: #02ff28;
+  }
+  90% {
+    background-color: #63ff02;
+  }
+  100% {
+    background-color: #c8ff02;
+  }
+}
