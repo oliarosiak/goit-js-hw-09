@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 /**
  * Напиши скрипт, который при сабмите формы вызывает функцию 
  * createPromise(position, delay) столько раз, сколько ввели в поле amount. 
@@ -17,30 +19,70 @@ refs.form.addEventListener('submit', onSubmitBtn);
 
 function onSubmitBtn(event) {
   event.preventDefault();
-  let firstDeleyValue = refs.delay.value;
-  let stepDeleyValue = refs.step.value;
-  let amountValue = refs.amount.value;
-  let delay = 0;
+  let firstDeleyValue = Number(refs.delay.value);  
+  let stepDeleyValue = Number(refs.step.value);
+  let amountValue = refs.amount.value;  
 
-  for (let position = 1; position <= amountValue; position += 1) {
-    delay = firstDeleyValue;
+  for (let position = 1; position <= amountValue; position += 1){
+    let delay;
     if (position > 1) {
-      delay = stepDeleyValue;          
+      firstDeleyValue += stepDeleyValue;
     }
-    
-    setTimeout(createPromise(position, delay), delay) ;
-  }
+    delay = firstDeleyValue;    
+    console.log('delay:', delay);
+
+    setTimeout(createPromise, delay);
+  }  
 }
 
 function createPromise(position, delay) {
   const shouldResolve = Math.random() > 0.3;
-  // console.log(shouldResolve);
+  console.log(shouldResolve);
   if (shouldResolve) {
-    console.log('aaaaaaa');// Fulfill
+    Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);// Fulfill
   } else {
-    console.log('beeeee');// Reject
+    Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);// Reject
   }
 }
+
+// function onSubmitBtn(event) {
+//   event.preventDefault();
+//   let firstDeleyValue = refs.delay.value;
+//   let stepDeleyValue = refs.step.value;
+//   let amountValue = refs.amount.value;
+//   let position;
+//   let delay = 0;
+
+//   for (let position = 1; position <= amountValue; position += 1) {
+//     // delay = firstDeleyValue;
+//     if (position > 1) {
+//       delay = stepDeleyValue;          
+//     }
+//     console.log('delay', delay);  
+
+//     setInterval(function createPromise(position, delay) {
+//       const shouldResolve = Math.random() > 0.3;
+//       console.log(shouldResolve);
+//       if (shouldResolve) {
+//         Notiflix.Notify.success('Fulfilled promise');// Fulfill
+//       } else {
+//         Notiflix.Notify.failure('Rejected promise');// Reject
+//       }
+//     }, delay);
+//   }
+
+  
+// }
+
+// function createPromise(position, delay) {
+//   const shouldResolve = Math.random() > 0.3;
+//   console.log(shouldResolve);
+//   if (shouldResolve) {
+//     Notiflix.Notify.success('Fulfilled promise');// Fulfill
+//   } else {
+//     Notiflix.Notify.failure('Rejected promise');// Reject
+//   }
+// }
 
 // createPromise(2, 1500)
 //   .then(({ position, delay }) => {
