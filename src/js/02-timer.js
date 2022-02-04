@@ -2,6 +2,7 @@ import flatpickr from 'flatpickr';
 // Дополнительный импорт стилей
 import 'flatpickr/dist/flatpickr.min.css';
 require("flatpickr/dist/themes/confetti.css");
+import Notiflix from 'notiflix';
 
 /**
  * Decoration
@@ -48,7 +49,8 @@ const options = {
         
         if (selectedDates[0] <= currentDate) {
             startBtn.disabled = true;
-            window.alert('Please choose a date in the future'); 
+            Notiflix.Notify.info('Please choose a date in the future')
+            // window.alert('Please choose a date in the future'); 
             return;
         } 
         
